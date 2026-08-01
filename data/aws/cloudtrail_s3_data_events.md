@@ -19,6 +19,7 @@ selector, because of the volume and cost involved.
 | userIdentity.arn | userIdentity.arn | aws.cloudtrail.user_identity.arn | ARN of the principal making the request | |
 | requestParameters.bucketName | requestParameters.bucketName | (no ECS standard field) | Target bucket | Yes |
 | requestParameters.key | requestParameters.key | (no ECS standard field) | Target object key | Yes |
+| requestParameters.Host | requestParameters.Host | host.name | HTTP Host header on S3 signed-URL/virtual-hosted requests; lowercased. Present alongside bucketName/key on signed-URL access | |
 
 ## Detection notes
 
