@@ -4,11 +4,11 @@
 **Sigma category:** aws.cloudtrail
 **Event ID:** SendCommand (eventName)
 
-Systems Manager `SendCommand` calls — remote command execution against
-managed EC2/on-prem instances via the SSM agent, no SSH or RDP required.
-One of the most abused AWS-native techniques for lateral movement and
-execution, because it runs entirely through the AWS API and control-plane
-logging, not host-level shell logging.
+Systems Manager `SendCommand` calls perform remote command execution
+against managed EC2/on-prem instances via the SSM agent, no SSH or RDP
+required. One of the most abused AWS-native techniques for lateral
+movement and execution, because it runs entirely through the AWS API and
+control-plane logging, not host-level shell logging.
 
 ## Fields
 
@@ -29,7 +29,7 @@ logging, not host-level shell logging.
 `userIdentity.arn` that doesn't normally operate SSM (outside a config-
 management/patching automation role), is the primary signal for
 credential-compromise-driven remote execution. `responseElements.command
-.commandId` is the pivot field — correlate it against the target instance's
+.commandId` is the pivot field; correlate it against the target instance's
 own logs (SSM command history, CloudWatch) to recover what the command
 actually did, since CloudTrail itself does not log command output or
 content.

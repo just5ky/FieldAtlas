@@ -6,7 +6,7 @@
 
 Falcon sensor event generated for a process that is running or has finished
 running on a host. The Falcon equivalent of Sysmon Event ID 1 (process
-creation) — nearly every process-based technique surfaces here first.
+creation): nearly every process-based technique surfaces here first.
 Reported once when the process starts and again as a matching completion
 event when it exits. Fields below are raw sensor field names; CrowdStrike
 Sigma rules match on these directly, so the native and Sigma name columns
@@ -44,7 +44,7 @@ privilege-escalation and token-theft detections.
 
 ## Volume notes
 
-Highest-volume CrowdStrike event on most endpoints — every process spawn,
+Highest-volume CrowdStrike event on most endpoints: every process spawn,
 on every host. Pre-filter before shipping to a downstream SIEM: exclude
 known noisy parent/child pairs and short-lived system utility spawns rather
 than dropping the event type outright, same tradeoff as Sysmon Event ID 1.

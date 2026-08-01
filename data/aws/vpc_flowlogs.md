@@ -7,7 +7,7 @@
 Captures metadata about IP traffic flowing to and from network interfaces
 within a VPC: source/destination IPs, ports, protocol, byte/packet counts,
 and whether traffic was accepted or rejected. One record covers an
-aggregation window (`start`–`end`), not a single packet — this is the
+aggregation window (`start`–`end`), not a single packet. This is the
 default (version 2) field set, not the full custom-format schema AWS also
 supports. Sigma rules match on these raw record field names directly, so
 the native and Sigma name columns are identical.
@@ -37,11 +37,11 @@ the native and Sigma name columns are identical.
 `srcaddr` in a short window is port-scanning; the same pattern from one
 `dstaddr` across many `srcaddr` values is the target-side view of a scan or
 a distributed brute force against a single exposed service. `dstport`
-values for known C2/tunneling ports (4444, 8080, 8443 alongside unexpected
-`bytes`/`packets` ratios — many small packets vs. few large ones) is a
+values for known C2/tunneling ports (4444, 8080, 8443, alongside unexpected
+`bytes`/`packets` ratios: many small packets vs. few large ones) is a
 secondary heuristic for beaconing, best paired with Sysmon Event ID 3 /
 DNS query events when the destination is also visible at the host level.
-Flow logs alone give no process or user attribution — correlate `srcaddr`
+Flow logs alone give no process or user attribution; correlate `srcaddr`
 against instance/ENI ownership to get there.
 
 ## Volume notes

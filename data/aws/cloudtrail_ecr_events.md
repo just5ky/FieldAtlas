@@ -4,9 +4,9 @@
 **Sigma category:** aws.cloudtrail
 **Event ID:** PutImage / BatchGetImage / BatchDeleteImage (eventName)
 
-Elastic Container Registry image push/pull/delete activity. `eventSource` is
-always `ecr.amazonaws.com`. The only CloudTrail dataset that populates
-`container.*` ECS fields — relevant for supply-chain detections (an
+Elastic Container Registry image push/pull/delete activity. `eventSource`
+is always `ecr.amazonaws.com`. The only CloudTrail dataset that populates
+`container.*` ECS fields, relevant for supply-chain detections (an
 unexpected principal pushing an image, or pushing to a repository outside
 its normal deploy pipeline).
 
@@ -27,12 +27,11 @@ its normal deploy pipeline).
 
 `PutImage` from a `userIdentity.arn` outside the known CI/CD deploy role, or
 outside normal build-pipeline hours, is the primary signal for a
-compromised-pipeline or supply-chain push. Tag reuse — a new
-`imageDigest` pushed under an existing, previously-deployed
-`imageTag` (e.g. `latest` or a release tag) — is a classic technique for
-swapping a running workload's image without changing the reference
-consumers pull by name; alert when a tag's digest changes outside a
-release window.
+compromised-pipeline or supply-chain push. Tag reuse (a new `imageDigest`
+pushed under an existing, previously-deployed `imageTag`, e.g. `latest` or
+a release tag) is a classic technique for swapping a running workload's
+image without changing the reference consumers pull by name; alert when a
+tag's digest changes outside a release window.
 
 ## Volume notes
 

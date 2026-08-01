@@ -28,14 +28,14 @@ identical.
 `TargetFileName` with a macro-enabled extension (`.docm`, `.xlsm`, `.pptm`)
 written by `ContextBaseFileName` values outside Office itself (a browser,
 an email client's attachment handler, or an archive utility) is the primary
-phishing-payload-drop signal — correlate `ContextProcessId` forward against
+phishing-payload-drop signal; correlate `ContextProcessId` forward against
 ProcessRollup2 to see what that writer process does next. `IsOnNetwork` or
 `IsOnRemoveableDisk` set true adds a distribution-vector signal worth
 carrying into the alert (network share vs. USB vs. local/downloaded).
 
 ## Volume notes
 
-Moderate — scales with normal document creation/editing activity in the
+Moderate. Scales with normal document creation/editing activity in the
 org, not just malicious drops. Filter out the process's own editing
 application (WINWORD.EXE writing .docx, EXCEL.EXE writing .xlsx) as
 expected baseline before alerting on macro-enabled extensions from

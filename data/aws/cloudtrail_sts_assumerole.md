@@ -4,11 +4,11 @@
 **Sigma category:** aws.cloudtrail
 **Event ID:** AssumeRole / AssumeRoleWithSAML / AssumeRoleWithWebIdentity (eventName)
 
-STS role-assumption calls — the mechanism behind every cross-account access,
-federated login, and temporary-credential grant in AWS. `eventSource` is
-always `sts.amazonaws.com`. The primary AWS-native path for both legitimate
-cross-account workflows and privilege-escalation/lateral-movement after an
-initial credential compromise.
+STS role-assumption calls are the mechanism behind every cross-account
+access, federated login, and temporary-credential grant in AWS.
+`eventSource` is always `sts.amazonaws.com`. The primary AWS-native path
+for both legitimate cross-account workflows and privilege-escalation/
+lateral-movement after an initial credential compromise.
 
 ## Fields
 
@@ -38,7 +38,7 @@ windows. `requestParameters.sourceIdentity` is set once and survives role
 chains (A→B→C); use it to keep attribution when an attacker pivots through
 multiple assumed roles. `responseElements.credentials.accessKeyId` (the
 `ASIA*` temp key) is the pivot field for tracking everything the assumed
-role does afterward — correlate it against subsequent CloudTrail events.
+role does afterward; correlate it against subsequent CloudTrail events.
 
 ## Volume notes
 
